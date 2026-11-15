@@ -123,6 +123,17 @@ dialog#lb{padding:0;border:1px solid var(--gb);border-radius:18px;background:#0a
 dialog#lb::backdrop{background:rgba(0,0,0,.82)}
 dialog#lb img{display:block;max-width:100%;max-height:86vh;margin:0 auto}
 dialog#lb button{position:absolute;right:10px;top:10px;width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(0,0,0,.65);color:#fff;font-size:22px;line-height:1;cursor:pointer}
+/* admin + hapus */
+.adm{max-width:440px;margin:6px auto 0;padding:20px;border:1px solid var(--gb);border-radius:20px;background:var(--glass);text-align:center}
+.adm h2{margin:0 0 12px;font-size:18px}
+.adm form{display:flex;flex-direction:column;gap:10px;text-align:left}
+.adm p{margin:0 0 12px;color:#c9bdb6}
+.adm .msg{margin:10px 0 0;text-align:left}
+input[type=email],input[type=password]{font:inherit;color:var(--fg);background:rgba(5,3,10,.7);border:1px solid var(--gb);border-radius:14px;padding:12px 14px;width:100%}
+.btn.alt{background:transparent;color:#ffc000;border:1px solid #ff9b00;box-shadow:none;padding:9px 20px}
+.btn-del{margin-left:auto;font:inherit;font-weight:800;font-size:12px;color:#ff8d8d;background:transparent;border:1px solid #ff6b6b;border-radius:20px;padding:5px 14px;cursor:pointer}
+.btn-del:hover{background:rgba(255,90,90,.15)}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 /* footer */
 footer{margin-top:70px;border-top:1px solid rgba(255,255,255,.1);padding:28px 0 90px;text-align:center;color:var(--mut);font-size:12px}
 footer a{color:#ffb000}
@@ -167,6 +178,21 @@ footer a{color:#ffb000}
     <button type="button" class="btn js-open">Tulis Testimoni ↗</button>
   </section>
 
+  <section class="adm" id="adm" hidden>
+    <form id="af">
+      <h2>Masuk Admin</h2>
+      <input type="email" id="aem" placeholder="Email admin" required autocomplete="username">
+      <input type="password" id="apw" placeholder="Password" required autocomplete="current-password">
+      <button class="btn" type="submit">Masuk</button>
+    </form>
+    <div id="aon" hidden>
+      <h2>Mode Admin</h2>
+      <p>Tombol Hapus tampil di setiap testimoni.</p>
+      <button type="button" class="btn alt" id="alo">Keluar</button>
+    </div>
+    <p class="msg err" id="aerr" role="alert" hidden></p>
+  </section>
+
   <section class="sum" id="sum" aria-label="Ringkasan" hidden>
     <div><b id="avg"></b><span>Rata-rata rating</span></div>
     <div><b id="tot"></b><span>Testimoni</span></div>
@@ -188,7 +214,7 @@ footer a{color:#ffb000}
   <section class="list" id="list"></section>
 
   <section class="cta-box" id="tulis">
-    <p class="msg ok" id="okmsg" role="status" hidden>Terima kasih! WhatsApp akan terbuka dengan testimoni Anda. Tinggal tekan kirim di sana.</p>
+    <p class="msg ok" id="okmsg" role="status" hidden>Terima kasih! Testimoni Anda sudah tampil di halaman ini.</p>
     <h2>Sudah pernah pakai layanan kami?</h2>
     <p>Ceritakan pengalaman Anda, tidak perlu login.</p>
     <button type="button" class="btn js-open">＋ Tambah Testimoni</button>
@@ -201,6 +227,7 @@ footer a{color:#ffb000}
       <p>Ceritakan pengalaman Anda memakai layanan Rekan Joki.</p>
       <p class="msg err" id="ferr" role="alert" hidden></p>
       <form id="tf" autocomplete="off">
+        <div class="hp" aria-hidden="true"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
         <div class="fg">
           <div class="fld">
             <label class="lb" for="nama">Nama</label>
@@ -235,8 +262,8 @@ footer a{color:#ffb000}
             <div class="cnt"><span id="c">0</span>/500</div>
           </div>
         </div>
-        <p style="margin:18px 0 0"><button class="btn" type="submit">Kirim lewat WhatsApp</button></p>
-        <p class="fine">Testimoni dikirim ke admin lewat WhatsApp dan ditampilkan di halaman ini setelah ditinjau. Tautan tidak diperbolehkan.</p>
+        <p style="margin:18px 0 0"><button class="btn" type="submit">Kirim Testimoni</button></p>
+        <p class="fine">Testimoni langsung ditampilkan. Tautan tidak diperbolehkan.</p>
       </form>
     </div>
   </dialog>
@@ -246,29 +273,21 @@ footer a{color:#ffb000}
 <footer><div class="w">© <span id="yr">2026</span> Rekan Joki. Seluruh hak cipta dilindungi. <span>•</span> <a href="https://wa.me/6281528301205?text=Halo%20Rekan%20Joki%2C%20saya%20mau%20tanya%20layanan." target="_blank" rel="noopener">Hubungi kami</a></div></footer>
 <a class="fab" target="_blank" rel="noopener" href="https://wa.me/6281528301205?text=Halo%20Rekan%20Joki%2C%20saya%20mau%20tanya%20layanan.">💬 Chat WhatsApp</a>
 
-<dialog id="lb" aria-label="Gambar testimoni"><img alt=""><button type="button" aria-label="Tutup">×</button></dialog>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 /* ============================================================
-   DAFTAR TESTIMONI
-   Tambah testimoni baru dengan menyalin satu blok { ... } di bawah.
-   Taruh yang terbaru paling atas. Pisahkan tiap blok dengan koma.
-   - svc : "desain", "peta", atau "tugas"
-   - item: boleh dikosongkan ("")
-   - rate: angka 1 sampai 5
-   - tgl : teks bebas, contoh "November 2026"
-   - img : nama file gambar (contoh "testi/budi.jpg"), kosongkan "" bila tanpa gambar
+   PENGATURAN SUPABASE
+   Isi dua nilai di bawah dari Supabase: Project Settings > API
+   (Project URL dan anon public key). Panduan ada di supabase-setup.sql.
    ============================================================ */
-var TESTIMONI = [
-  // {
-  //   nama: "Budi Santoso", svc: "desain", item: "Logo", rate: 5,
-  //   isi: "Hasil desainnya rapi dan selesai tepat waktu. Terima kasih!",
-  //   tgl: "November 2026", img: ""
-  // },
-];
+var SUPABASE_URL = 'https://XXXX.supabase.co';
+var SUPABASE_KEY = 'ISI_ANON_PUBLIC_KEY';
 
 var LABELS = { desain: 'Joki Desain', peta: 'Joki Peta', tugas: 'Joki Tugas' };
-var WA = '6281528301205', BRAND = 'Rekan Joki';
+var configured = SUPABASE_URL.indexOf('XXXX') === -1 && SUPABASE_KEY.indexOf('ISI_') === -1;
+var sb = (configured && window.supabase) ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
+var DATA = [], isAdmin = false, openedAt = 0;
 
 function esc(s) {
   return String(s).replace(/[&<>"']/g, function (c) {
@@ -280,51 +299,19 @@ function initials(n) {
   if (p.length > 1) i += p[p.length - 1].charAt(0).toUpperCase();
   return i;
 }
-
-// ----- tampilkan daftar -----
-var list = document.getElementById('list');
-if (!TESTIMONI.length) {
-  list.innerHTML = '<div class="empty">Belum ada testimoni. Jadilah yang pertama menulis!</div>';
-} else {
-  var sum = 0;
-  list.innerHTML = TESTIMONI.map(function (t, n) {
-    var rt = Math.max(1, Math.min(5, parseInt(t.rate, 10) || 5)), stars = '';
-    sum += rt;
-    for (var k = 1; k <= rt; k++) stars += '<s style="--k:' + k + '">★</s>';
-    stars += '<i>' + new Array(6 - rt).join('★') + '</i>';
-    var pic = t.img
-      ? '<button type="button" class="pic" data-src="' + esc(t.img) + '" aria-label="Perbesar gambar dari ' + esc(t.nama) + '"><img src="' + esc(t.img) + '" alt="Gambar dari ' + esc(t.nama) + '" loading="lazy"></button>'
-      : '<div class="pic noimg" aria-hidden="true">' + esc(initials(t.nama)) + '</div>';
-    var tag = (LABELS[t.svc] || t.svc) + (t.item ? ' · ' + t.item : '');
-    return '<article class="card" data-svc="' + esc(t.svc) + '" data-q="' + esc((t.nama + ' ' + t.isi + ' ' + (t.item || '')).toLowerCase()) + '" style="--i:' + (n % 3) + '">' +
-      pic +
-      '<div class="ban"><div class="ban-in">' +
-        '<div class="ban-top"><b class="nm">' + esc(t.nama) + '</b>' +
-        '<div class="stars" role="img" aria-label="Rating ' + rt + ' dari 5">' + stars + '</div></div>' +
-        '<p>“' + esc(t.isi) + '”</p>' +
-        '<div class="ban-meta"><span class="tag">' + esc(tag) + '</span><small>' + esc(t.tgl || '') + '</small></div>' +
-      '</div></div></article>';
-  }).join('') + '<p class="empty" id="nores" hidden>Tidak ada testimoni yang cocok.</p>';
-
-  document.getElementById('avg').textContent = (sum / TESTIMONI.length).toFixed(1).replace('.', ',') + ' ★';
-  document.getElementById('tot').textContent = TESTIMONI.length;
-  ['sum', 'searchbox', 'chips'].forEach(function (id) { document.getElementById(id).hidden = false; });
+function tgl(iso) {
+  try { return new Date(iso).toLocaleDateString('id-ID', { month: 'long', year: 'numeric' }); } catch (e) { return ''; }
 }
 
-// Perbesar gambar testimoni
-var dlg = document.getElementById('lb');
-document.querySelectorAll('.pic[data-src]').forEach(function (b) {
-  b.addEventListener('click', function () { dlg.querySelector('img').src = b.dataset.src; dlg.showModal(); });
-});
-dlg.addEventListener('click', function (e) { if (e.target === dlg || e.target.tagName === 'BUTTON') dlg.close(); });
-
-// Filter layanan + pencarian
-var chips = document.querySelectorAll('.chips button'), cards = document.querySelectorAll('.card');
-var qi = document.getElementById('q'), qx = document.getElementById('qx'), nores = document.getElementById('nores');
+var list = document.getElementById('list');
+var qi = document.getElementById('q'), qx = document.getElementById('qx');
+var chips = document.querySelectorAll('.chips button');
 var fsvc = 'all', fq = '';
+
+// ----- filter + pencarian -----
 function applyFilter() {
-  var shown = 0;
-  cards.forEach(function (c) {
+  var shown = 0, nores = document.getElementById('nores');
+  list.querySelectorAll('.card').forEach(function (c) {
     var ok = (fsvc === 'all' || c.dataset.svc === fsvc) && (fq === '' || c.dataset.q.indexOf(fq) > -1);
     c.classList.toggle('hide', !ok);
     if (ok) shown++;
@@ -341,49 +328,147 @@ chips.forEach(function (b) {
 qi.addEventListener('input', function () { fq = qi.value.trim().toLowerCase(); applyFilter(); });
 qx.addEventListener('click', function () { qi.value = ''; fq = ''; applyFilter(); qi.focus(); });
 
-// Munculkan kartu dengan animasi saat masuk layar
+// ----- animasi muncul saat masuk layar -----
 var io = ('IntersectionObserver' in window) ? new IntersectionObserver(function (es) {
   es.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
 }, { threshold: .12 }) : null;
-cards.forEach(function (c) { if (io) io.observe(c); else c.classList.add('in'); });
 
-// Form testimoni muncul sebagai pop-up
+// ----- tampilkan daftar -----
+function render() {
+  var show = DATA.length > 0;
+  ['sum', 'searchbox', 'chips'].forEach(function (id) { document.getElementById(id).hidden = !show; });
+  if (!show) {
+    list.innerHTML = '<div class="empty">Belum ada testimoni. Jadilah yang pertama menulis!</div>';
+    return;
+  }
+  var sum = 0;
+  list.innerHTML = DATA.map(function (t, n) {
+    var rt = Math.max(1, Math.min(5, parseInt(t.rate, 10) || 5)), stars = '';
+    sum += rt;
+    for (var k = 1; k <= rt; k++) stars += '<s style="--k:' + k + '">★</s>';
+    stars += '<i>' + new Array(6 - rt).join('★') + '</i>';
+    var tag = (LABELS[t.svc] || t.svc) + (t.item ? ' · ' + t.item : '');
+    return '<article class="card" data-svc="' + esc(t.svc) + '" data-q="' + esc((t.nama + ' ' + t.isi + ' ' + (t.item || '')).toLowerCase()) + '" style="--i:' + (n % 3) + '">' +
+      '<div class="pic noimg" aria-hidden="true">' + esc(initials(t.nama)) + '</div>' +
+      '<div class="ban"><div class="ban-in">' +
+        '<div class="ban-top"><b class="nm">' + esc(t.nama) + '</b>' +
+        '<div class="stars" role="img" aria-label="Rating ' + rt + ' dari 5">' + stars + '</div></div>' +
+        '<p>“' + esc(t.isi) + '”</p>' +
+        '<div class="ban-meta"><span class="tag">' + esc(tag) + '</span><small>' + esc(tgl(t.created_at)) + '</small>' +
+        (isAdmin ? '<button type="button" class="btn-del" data-id="' + esc(t.id) + '">Hapus</button>' : '') +
+        '</div>' +
+      '</div></div></article>';
+  }).join('') + '<p class="empty" id="nores" hidden>Tidak ada testimoni yang cocok.</p>';
+
+  document.getElementById('avg').textContent = (sum / DATA.length).toFixed(1).replace('.', ',') + ' ★';
+  document.getElementById('tot').textContent = DATA.length;
+  list.querySelectorAll('.card').forEach(function (c) { if (io) io.observe(c); else c.classList.add('in'); });
+  applyFilter();
+}
+
+async function load() {
+  if (!sb) {
+    list.innerHTML = '<div class="empty">Testimoni belum tersambung ke database. Isi SUPABASE_URL dan SUPABASE_KEY di bagian script.</div>';
+    return;
+  }
+  var r = await sb.from('testimoni').select('*').order('created_at', { ascending: false });
+  if (r.error) {
+    list.innerHTML = '<div class="empty">Testimoni belum bisa dimuat. Coba muat ulang halaman.</div>';
+    return;
+  }
+  DATA = r.data || [];
+  render();
+}
+
+// ----- hapus (khusus admin) -----
+list.addEventListener('click', async function (e) {
+  var b = e.target.closest('.btn-del');
+  if (!b || !sb) return;
+  if (!confirm('Hapus testimoni ini?')) return;
+  b.disabled = true;
+  var r = await sb.from('testimoni').delete().eq('id', b.dataset.id).select();
+  if (r.error || !r.data || !r.data.length) {
+    alert('Gagal menghapus. Pastikan Anda masuk sebagai admin.');
+    b.disabled = false;
+    return;
+  }
+  load();
+});
+
+// ----- login admin -----
+var adm = document.getElementById('adm'), af = document.getElementById('af'),
+    aon = document.getElementById('aon'), aerr = document.getElementById('aerr');
+function adminUI() {
+  adm.hidden = !(isAdmin || /[?&]admin\b/.test(location.search));
+  af.hidden = isAdmin;
+  aon.hidden = !isAdmin;
+  aerr.hidden = true;
+}
+af.addEventListener('submit', async function (e) {
+  e.preventDefault();
+  if (!sb) { aerr.textContent = 'Database belum tersambung.'; aerr.hidden = false; return; }
+  var r = await sb.auth.signInWithPassword({ email: document.getElementById('aem').value.trim(), password: document.getElementById('apw').value });
+  if (r.error) { aerr.textContent = 'Email atau password salah.'; aerr.hidden = false; return; }
+  isAdmin = true; af.reset(); adminUI(); render();
+});
+document.getElementById('alo').addEventListener('click', async function () {
+  if (sb) await sb.auth.signOut();
+  isAdmin = false; adminUI(); render();
+});
+
+// ----- form testimoni -----
 var fm = document.getElementById('fm'), tf = document.getElementById('tf'), ferr = document.getElementById('ferr');
 document.querySelectorAll('.js-open').forEach(function (b) {
-  b.addEventListener('click', function () { ferr.hidden = true; fm.showModal(); });
+  b.addEventListener('click', function () { ferr.hidden = true; openedAt = Date.now(); fm.showModal(); });
 });
 fm.querySelector('.fm-x').addEventListener('click', function () { fm.close(); });
 fm.addEventListener('click', function (e) { if (e.target === fm) fm.close(); });
 
-// Penghitung karakter
 var ta = document.getElementById('isi'), cn = document.getElementById('c');
 function upCount() { cn.textContent = ta.value.length; }
 ta.addEventListener('input', upCount); upCount();
 
-// Kirim testimoni: dibuka lewat WhatsApp ke admin
-tf.addEventListener('submit', function (e) {
+tf.addEventListener('submit', async function (e) {
   e.preventDefault();
+  if (tf.website.value !== '') return; // jebakan bot
   var nama = tf.nama.value.trim(), svc = tf.svc.value, item = tf.item.value.trim(),
-      isi = tf.isi.value.trim(), r = tf.querySelector('input[name=rate]:checked'),
-      err = '';
-  if (nama.length < 2 || nama.length > 40) err = 'Nama harus 2 sampai 40 karakter.';
+      isi = tf.isi.value.trim(), r = tf.querySelector('input[name=rate]:checked'), err = '';
+  if (!sb) err = 'Database belum tersambung. Hubungi admin.';
+  else if (Date.now() - openedAt < 3000) err = 'Form terkirim terlalu cepat. Coba lagi sebentar.';
+  else if (nama.length < 2 || nama.length > 40) err = 'Nama harus 2 sampai 40 karakter.';
   else if (!LABELS[svc]) err = 'Pilih jenis layanan yang Anda pesan.';
   else if (!r) err = 'Pilih rating bintang 1 sampai 5.';
   else if (isi.length < 10 || isi.length > 500) err = 'Isi testimoni harus 10 sampai 500 karakter.';
   else if (/https?:\/\/|www\./i.test(isi + ' ' + nama + ' ' + item)) err = 'Tautan tidak diperbolehkan di testimoni.';
+  if (!err) {
+    try {
+      var last = parseInt(localStorage.getItem('tj_last') || '0', 10);
+      if (Date.now() - last < 60000) err = 'Tunggu satu menit sebelum mengirim lagi.';
+    } catch (x) {}
+  }
   if (err) { ferr.textContent = err; ferr.hidden = false; return; }
 
-  var rate = parseInt(r.value, 10);
-  var msg = 'Halo ' + BRAND + ', saya ingin mengirim testimoni:\n\n' +
-    'Nama: ' + nama + '\n' +
-    'Layanan: ' + LABELS[svc] + (item ? ' (' + item + ')' : '') + '\n' +
-    'Rating: ' + new Array(rate + 1).join('★') + new Array(6 - rate).join('☆') + ' (' + rate + '/5)\n' +
-    'Testimoni: ' + isi;
-  window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
+  var btn = tf.querySelector('button[type=submit]');
+  btn.disabled = true;
+  var res = await sb.from('testimoni').insert({ nama: nama, svc: svc, item: item, rate: parseInt(r.value, 10), isi: isi });
+  btn.disabled = false;
+  if (res.error) { ferr.textContent = 'Testimoni belum bisa dikirim. Coba lagi nanti.'; ferr.hidden = false; return; }
+  try { localStorage.setItem('tj_last', String(Date.now())); } catch (x) {}
   fm.close(); tf.reset(); upCount();
   document.getElementById('okmsg').hidden = false;
   document.getElementById('tulis').scrollIntoView({ behavior: 'smooth' });
+  load();
 });
+
+// ----- mulai -----
+(async function () {
+  if (sb) {
+    var ses = await sb.auth.getSession();
+    isAdmin = !!(ses.data && ses.data.session);
+  }
+  adminUI();
+  await load();
+})();
 
 // Tahun di footer
 document.getElementById('yr').textContent = new Date().getFullYear();
