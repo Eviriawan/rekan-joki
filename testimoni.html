@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Testimoni - Rekan Joki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+<script>document.documentElement.className='js';</script>
+<style>
+:root{--bg:#07050d;--fg:#fff8f1;--mut:#c2b7b0;--glass:rgba(255,255,255,.045);--gb:rgba(255,138,25,.32);--ac:#ff7900;--ac2:#ffc226;--purple:#6a1fd0;--orange:#ff8a00;--amber:#ffb627}
+html{scroll-behavior:smooth}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;color:var(--fg);font-family:"Segoe UI",system-ui,-apple-system,sans-serif;font-size:15px;line-height:1.55;overflow-x:hidden;position:relative;
+  background-color:var(--bg);
+  background-image:
+    radial-gradient(60% 45% at 100% 0%, rgba(255,138,0,.55), transparent 70%),
+    radial-gradient(45% 40% at 0% 18%, rgba(255,120,0,.40), transparent 70%),
+    radial-gradient(55% 45% at 55% 38%, rgba(106,31,208,.50), transparent 72%),
+    radial-gradient(50% 40% at 15% 100%, rgba(255,138,0,.30), transparent 70%),
+    radial-gradient(40% 35% at 100% 85%, rgba(106,31,208,.35), transparent 70%);
+  background-repeat:no-repeat;background-attachment:fixed}
+a{color:inherit;text-decoration:none}
+.dots-bg{position:fixed;inset:0;z-index:-1;pointer-events:none;background-image:radial-gradient(rgba(255,255,255,.16) 1px,transparent 1.5px);background-size:24px 24px;opacity:.5;-webkit-mask-image:linear-gradient(135deg,#000 0%,transparent 45%);mask-image:linear-gradient(135deg,#000 0%,transparent 45%)}
+body::before,body::after{content:"";position:fixed;pointer-events:none;z-index:-1;border-radius:50%;border:3px solid transparent;filter:drop-shadow(0 0 14px var(--orange))}
+body::before{width:130vmax;height:46vmax;left:-35vmax;bottom:-30vmax;border-top-color:var(--amber);transform:rotate(-8deg);opacity:.7;animation:swoosh 14s ease-in-out infinite alternate}
+body::after{width:90vmax;height:34vmax;right:-30vmax;top:-22vmax;border-bottom-color:var(--orange);transform:rotate(-12deg);opacity:.5;animation:swoosh 18s ease-in-out infinite alternate-reverse}
+@keyframes swoosh{from{translate:0 0}to{translate:3vmax -1.5vmax}}
+.w{max-width:1280px;width:90%;margin:0 auto;padding:0 15px}
+/* header */
+header{position:sticky;top:0;z-index:30;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);background:rgba(5,4,10,.88);border-bottom:1px solid rgba(255,255,255,.09)}
+header .w{display:flex;align-items:center;justify-content:space-between;min-height:78px;padding-top:12px;padding-bottom:12px}
+.brand-lockup{display:flex;align-items:center;gap:12px;font-size:27px;font-weight:950;letter-spacing:-1px;white-space:nowrap}
+.brand-lockup img{height:52px;width:52px;object-fit:contain;border-radius:50%;filter:drop-shadow(0 0 14px rgba(255,110,0,.25))}
+.brand-lockup span b{color:#ff9b00}
+.hn{display:flex;gap:8px;align-items:center}
+.hn a{padding:10px 13px;border-radius:30px;font-weight:600;font-size:14px;color:#e7ded8;transition:.2s;position:relative}
+.hn a:hover{color:#fff;background:var(--glass)}
+.hn a.active{color:#ffb000}
+.hn a.active::after{content:"";position:absolute;left:14px;right:14px;bottom:2px;height:2px;border-radius:2px;background:var(--amber)}
+.hn .cta{background:linear-gradient(90deg,var(--ac),var(--ac2));color:#111;font-weight:800;padding:12px 22px;box-shadow:0 0 24px rgba(255,135,0,.25)}
+.hn .cta:hover{color:#111;box-shadow:0 0 22px rgba(255,122,0,.6)}
+/* hero */
+.hero{text-align:center;margin:56px 0 30px}
+.hero small{display:inline-block;padding:7px 18px;border:1px solid #ffb000;border-radius:30px;letter-spacing:2px;font-size:12px;font-weight:800;background:rgba(0,0,0,.35)}
+.hero h1{font-family:"Bebas Neue",Impact,"Arial Narrow",sans-serif;font-weight:400;font-style:italic;font-size:clamp(52px,9vw,104px);line-height:.95;margin:16px 0 12px;text-transform:uppercase;letter-spacing:-1px}
+.hero h1 b{font-weight:400;background:linear-gradient(100deg,#ff7a00,#ffd52e 55%,#ff9c00);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 14px rgba(255,140,0,.25))}
+.hero p{margin:0 auto 22px;max-width:56ch;color:#d0c4bd}
+.btn{display:inline-block;border:0;cursor:pointer;font:inherit;font-weight:900;color:#160900;background:linear-gradient(90deg,#ff7900,#ffbd20);padding:13px 28px;border-radius:30px;box-shadow:0 0 28px rgba(255,125,0,.4);transition:.2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 0 38px rgba(255,125,0,.6)}
+/* ringkasan */
+.sum{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin:26px 0 8px}
+.sum div{min-width:150px;padding:16px 22px;text-align:center;border:1px solid rgba(255,145,20,.28);border-radius:20px;background:linear-gradient(120deg,rgba(255,105,0,.12),rgba(100,0,255,.08));backdrop-filter:blur(10px)}
+.sum b{display:block;font-size:30px;font-weight:900;background:linear-gradient(90deg,var(--ac),var(--ac2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sum span{font-size:12px;color:var(--mut)}
+/* filter */
+.chips{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin:30px 0 26px}
+.chips button{font:inherit;font-weight:700;font-size:13px;color:var(--fg);background:rgba(0,0,0,.35);border:1px solid var(--gb);padding:9px 20px;border-radius:30px;cursor:pointer;transition:.2s}
+.chips button:hover{border-color:#ff9b00;color:#ffc000}
+.chips button.on{background:linear-gradient(90deg,#ff8500,#ffc126);color:#130900;border-color:transparent}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #fff;outline-offset:3px}
+/* pencarian */
+.search{display:flex;align-items:center;gap:12px;max-width:660px;margin:34px auto 0;padding:10px 18px;border:1.5px solid #ff9b00;border-radius:18px;background:rgba(0,0,0,.4)}
+.search:focus-within{box-shadow:0 0 0 3px rgba(255,176,0,.35)}
+.search svg{flex:none;width:24px;height:24px}
+.search input{flex:1;min-width:0;border:0;outline:0;background:transparent;color:#ffd27a;font:inherit;font-size:18px;text-align:center}
+.search input::placeholder{color:#a8896a}
+.search button{border:0;background:none;color:#ffb000;font-size:22px;line-height:1;cursor:pointer;padding:0 2px}
+/* daftar testimoni: banner panah */
+.list{display:flex;flex-direction:column;gap:46px;max-width:940px;margin:0 auto;padding-top:14px}
+.card{--pw:150px;--tip:56px;position:relative;display:flex;gap:16px;align-items:stretch;min-height:150px;transition:transform .25s}
+.card:hover{transform:translateY(-4px)}
+.card.hide{display:none}
+.card::before{content:"";position:absolute;left:calc(var(--pw) + 16px);top:-22px;width:26px;height:22px;background:rgba(255,138,0,.55);clip-path:polygon(100% 0,100% 100%,0 100%);pointer-events:none}
+.pic{flex:none;width:var(--pw);height:var(--pw);padding:0;border:3px solid #ff9b00;border-radius:28px;overflow:hidden;background:#0a0610;cursor:zoom-in;box-shadow:0 0 24px rgba(255,125,0,.25)}
+.pic img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .35s}
+.pic:hover img{transform:scale(1.06)}
+.pic.noimg{display:grid;place-items:center;cursor:default;font-size:44px;font-weight:900;color:#160900;background:linear-gradient(135deg,#ff7900,#ffc226)}
+.ban{flex:1;min-width:0;padding:2px;background:linear-gradient(120deg,#ff9b00,rgba(255,138,0,.45) 50%,#8b3dff);clip-path:polygon(0 0,calc(100% - var(--tip)) 0,100% 50%,calc(100% - var(--tip)) 100%,0 100%)}
+.ban-in{height:100%;display:flex;flex-direction:column;gap:8px;padding:20px 78px 18px 26px;background:linear-gradient(140deg,rgba(255,130,0,.14),rgba(120,0,255,.16)),#120a1c;clip-path:polygon(0 0,calc(100% - var(--tip) + 1px) 0,100% 50%,calc(100% - var(--tip) + 1px) 100%,0 100%)}
+.ban-top{display:flex;justify-content:space-between;align-items:center;gap:6px 14px;flex-wrap:wrap}
+.nm{font-size:18px;font-weight:900;line-height:1.2;color:#fff;overflow-wrap:anywhere}
+.stars{color:#ffc226;letter-spacing:2px;font-size:20px;line-height:1}
+.stars i{font-style:normal;color:rgba(255,255,255,.22)}
+.ban-in p{margin:0;font-style:italic;font-size:16px;color:#eadfd8;overflow-wrap:anywhere;white-space:pre-line}
+.ban-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:auto}
+.ban-meta small{color:var(--mut);font-size:12px}
+.tag{display:inline-block;font-size:11px;font-weight:800;color:#170b00;padding:4px 12px;border-radius:20px;background:linear-gradient(90deg,#ffb000,#ff7900)}
+.empty{text-align:center;padding:44px 20px;border:1px dashed var(--gb);border-radius:24px;color:var(--mut)}
+/* ajakan menulis + form pop-up */
+.cta-box{max-width:640px;margin:60px auto 0;text-align:center;scroll-margin-top:96px}
+.cta-box h2{margin:0 0 6px;font-size:clamp(22px,3vw,32px);font-weight:900}
+.cta-box p{margin:0 0 18px;color:#c9bdb6}
+.cta-box .msg{text-align:left}
+dialog#fm{width:min(720px,94vw);max-height:92vh;padding:0;border:1px solid rgba(255,145,20,.55);border-radius:26px;color:var(--fg);background:linear-gradient(130deg,rgba(255,105,0,.14),rgba(100,0,255,.14)),#120a1c;overflow:auto;box-shadow:0 30px 90px -20px rgba(255,120,0,.45)}
+dialog#fm::backdrop{background:rgba(0,0,0,.8);backdrop-filter:blur(4px)}
+.fm-in{padding:30px}
+.fm-in h2{margin:0 0 6px;padding-right:44px;font-size:clamp(22px,3vw,30px);font-weight:900}
+.fm-in>p{margin:0 0 22px;color:#c9bdb6}
+.fm-x{position:absolute;right:14px;top:14px;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(0,0,0,.5);color:#fff;font-size:24px;line-height:1;cursor:pointer;z-index:2}
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.fld{display:flex;flex-direction:column;gap:6px}
+.fld.full{grid-column:1/-1}
+.lb{font-weight:700;font-size:13px}
+.lb small{font-weight:400;color:var(--mut)}
+input[type=text],select,textarea{font:inherit;color:var(--fg);background:rgba(5,3,10,.7);border:1px solid var(--gb);border-radius:14px;padding:12px 14px;width:100%}
+select option{background:#14091c;color:#fff}
+textarea{min-height:130px;resize:vertical}
+input::placeholder,textarea::placeholder{color:#8f847d}
+.rate{display:flex;flex-direction:row-reverse;justify-content:flex-end;gap:2px;position:relative}
+.rate input{position:absolute;opacity:0;width:1px;height:1px}
+.rate label{font-size:34px;line-height:1;color:rgba(255,255,255,.25);cursor:pointer;transition:.15s}
+.rate label:hover,.rate label:hover~label,.rate input:checked~label{color:#ffc226}
+.rate input:focus-visible+label{outline:3px solid #fff;border-radius:6px}
+.cnt{font-size:12px;color:var(--mut);text-align:right}
+.msg{margin:0 0 18px;padding:13px 16px;border-radius:14px;font-weight:600}
+.msg.ok{background:rgba(60,200,120,.14);border:1px solid rgba(60,200,120,.5);color:#a8f0c6}
+.msg.err{background:rgba(255,90,90,.12);border:1px solid rgba(255,90,90,.5);color:#ffc0c0}
+.fine{margin:14px 0 0;font-size:12px;color:var(--mut)}
+dialog#lb{padding:0;border:1px solid var(--gb);border-radius:18px;background:#0a0610;max-width:min(92vw,1000px);overflow:hidden}
+dialog#lb::backdrop{background:rgba(0,0,0,.82)}
+dialog#lb img{display:block;max-width:100%;max-height:86vh;margin:0 auto}
+dialog#lb button{position:absolute;right:10px;top:10px;width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(0,0,0,.65);color:#fff;font-size:22px;line-height:1;cursor:pointer}
+/* footer */
+footer{margin-top:70px;border-top:1px solid rgba(255,255,255,.1);padding:28px 0 90px;text-align:center;color:var(--mut);font-size:12px}
+footer a{color:#ffb000}
+.fab{position:fixed;right:18px;bottom:18px;z-index:40;display:flex;gap:8px;align-items:center;background:linear-gradient(100deg,#ff7900,#ffc226);color:#111;font-weight:800;padding:14px 20px;border-radius:40px;box-shadow:0 8px 30px rgba(255,122,0,.45);border:1px solid rgba(255,220,140,.4)}
+/* animasi muncul */
+@keyframes rise{from{opacity:0;transform:translateY(18px)}}
+@keyframes pop{from{opacity:0;transform:translateY(26px) scale(.96)}}
+@keyframes twinkle{from{opacity:0;transform:scale(0) rotate(-120deg)}}
+.hero>small{animation:rise .6s ease backwards}
+.hero h1{animation:rise .6s ease .1s backwards}
+.hero>p{animation:rise .6s ease .3s backwards}
+.hero>.btn{animation:rise .6s ease .45s backwards}
+.js .card{opacity:0}
+.js .card.in{opacity:1;animation:pop .6s cubic-bezier(.2,.9,.3,1.1) calc(var(--i,0)*110ms) backwards}
+.stars s{text-decoration:none;display:inline-block}
+.card.in .stars s{animation:twinkle .45s ease calc(var(--i,0)*110ms + 350ms + var(--k)*110ms) backwards}
+@media(max-width:900px){.brand-lockup{font-size:22px}.hn a{padding:8px 9px}}
+@media(max-width:700px){header .w{align-items:flex-start;gap:12px;flex-direction:column}.hn{width:100%;flex-wrap:wrap}.hn a{font-size:12px;padding:7px 9px}.brand-lockup img{height:42px;width:42px}.fg{grid-template-columns:1fr}}
+@media(max-width:640px){.card{--pw:86px;--tip:34px;min-height:112px}.card::before{top:-18px;width:20px;height:18px}.pic{border-radius:20px;border-width:2px}.pic.noimg{font-size:28px}.ban-in{padding:14px 46px 14px 16px;gap:6px}.nm{font-size:16px}.stars{font-size:16px}.ban-in p{font-size:14.5px}.fg{grid-template-columns:1fr}.fm-in{padding:24px 18px}.search input{font-size:16px}}
+@media(max-width:600px){.w{width:100%;padding:0 14px}}
+@media(prefers-reduced-motion:reduce){body::before,body::after{animation:none}*{transition:none!important;animation:none!important}.js .card{opacity:1}}
+</style>
+</head>
+<body>
+<div class="dots-bg"></div>
+
+<header><div class="w">
+  <a class="brand-lockup" href="index.html"><img src="logo png.png" alt="Logo Rekan Joki"><span>Rekan <b>Joki</b></span></a>
+  <nav class="hn" aria-label="Navigasi utama">
+    <a href="index.html">Home</a>
+    <a class="active" href="testimoni.html" aria-current="page">Testimoni</a>
+    <a class="cta" target="_blank" rel="noopener" href="https://wa.me/6281528301205?text=Halo%20Rekan%20Joki%2C%20saya%20mau%20tanya%20layanan.">☏ Chat Sekarang</a>
+  </nav>
+</div></header>
+
+<main class="w">
+
+  <section class="hero">
+    <small>KATA MEREKA</small>
+    <h1>Testimoni</h1>
+    <p>Cerita pelanggan yang sudah memakai layanan desain, peta, dan tugas dari Rekan Joki.</p>
+    <button type="button" class="btn js-open">Tulis Testimoni ↗</button>
+  </section>
+
+  <section class="sum" id="sum" aria-label="Ringkasan" hidden>
+    <div><b id="avg"></b><span>Rata-rata rating</span></div>
+    <div><b id="tot"></b><span>Testimoni</span></div>
+  </section>
+
+  <div class="search" id="searchbox" role="search" hidden>
+    <svg viewBox="0 0 24 24" fill="none" stroke="#ffb000" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><circle cx="10" cy="10" r="6.5"/><path d="M15 15l6 6"/></svg>
+    <input type="search" id="q" placeholder="cari testimoni..." aria-label="Cari testimoni" autocomplete="off">
+    <button type="button" id="qx" aria-label="Hapus pencarian" hidden>✕</button>
+  </div>
+
+  <div class="chips" id="chips" role="group" aria-label="Filter layanan" hidden>
+    <button type="button" class="on" data-f="all">Semua</button>
+    <button type="button" data-f="desain">Joki Desain</button>
+    <button type="button" data-f="peta">Joki Peta</button>
+    <button type="button" data-f="tugas">Joki Tugas</button>
+  </div>
+
+  <section class="list" id="list"></section>
+
+  <section class="cta-box" id="tulis">
+    <p class="msg ok" id="okmsg" role="status" hidden>Terima kasih! WhatsApp akan terbuka dengan testimoni Anda. Tinggal tekan kirim di sana.</p>
+    <h2>Sudah pernah pakai layanan kami?</h2>
+    <p>Ceritakan pengalaman Anda, tidak perlu login.</p>
+    <button type="button" class="btn js-open">＋ Tambah Testimoni</button>
+  </section>
+
+  <dialog id="fm" aria-labelledby="fmt">
+    <button type="button" class="fm-x" aria-label="Tutup form">×</button>
+    <div class="fm-in">
+      <h2 id="fmt">Tulis testimoni Anda</h2>
+      <p>Ceritakan pengalaman Anda memakai layanan Rekan Joki.</p>
+      <p class="msg err" id="ferr" role="alert" hidden></p>
+      <form id="tf" autocomplete="off">
+        <div class="fg">
+          <div class="fld">
+            <label class="lb" for="nama">Nama</label>
+            <input type="text" id="nama" name="nama" maxlength="40" minlength="2" required placeholder="Nama Anda">
+          </div>
+          <div class="fld">
+            <label class="lb" for="svc">Jenis layanan</label>
+            <select id="svc" name="svc" required>
+              <option value="" disabled selected>Pilih layanan</option>
+              <option value="desain">Joki Desain</option>
+              <option value="peta">Joki Peta</option>
+              <option value="tugas">Joki Tugas</option>
+            </select>
+          </div>
+          <div class="fld">
+            <label class="lb" for="item">Yang dipesan <small>(opsional, contoh: Logo, Peta DAS)</small></label>
+            <input type="text" id="item" name="item" maxlength="40">
+          </div>
+          <div class="fld">
+            <span class="lb" id="rl">Rating</span>
+            <div class="rate" role="radiogroup" aria-labelledby="rl">
+              <input type="radio" id="r5" name="rate" value="5" required><label for="r5" title="5 bintang" aria-label="5 bintang">★</label>
+              <input type="radio" id="r4" name="rate" value="4"><label for="r4" title="4 bintang" aria-label="4 bintang">★</label>
+              <input type="radio" id="r3" name="rate" value="3"><label for="r3" title="3 bintang" aria-label="3 bintang">★</label>
+              <input type="radio" id="r2" name="rate" value="2"><label for="r2" title="2 bintang" aria-label="2 bintang">★</label>
+              <input type="radio" id="r1" name="rate" value="1"><label for="r1" title="1 bintang" aria-label="1 bintang">★</label>
+            </div>
+          </div>
+          <div class="fld full">
+            <label class="lb" for="isi">Testimoni</label>
+            <textarea id="isi" name="isi" maxlength="500" minlength="10" required placeholder="Tulis pengalaman Anda (10 sampai 500 karakter)"></textarea>
+            <div class="cnt"><span id="c">0</span>/500</div>
+          </div>
+        </div>
+        <p style="margin:18px 0 0"><button class="btn" type="submit">Kirim lewat WhatsApp</button></p>
+        <p class="fine">Testimoni dikirim ke admin lewat WhatsApp dan ditampilkan di halaman ini setelah ditinjau. Tautan tidak diperbolehkan.</p>
+      </form>
+    </div>
+  </dialog>
+
+</main>
+
+<footer><div class="w">© <span id="yr">2026</span> Rekan Joki. Seluruh hak cipta dilindungi. <span>•</span> <a href="https://wa.me/6281528301205?text=Halo%20Rekan%20Joki%2C%20saya%20mau%20tanya%20layanan." target="_blank" rel="noopener">Hubungi kami</a></div></footer>
+<a class="fab" target="_blank" rel="noopener" href="https://wa.me/6281528301205?text=Halo%20Rekan%20Joki%2C%20saya%20mau%20tanya%20layanan.">💬 Chat WhatsApp</a>
+
+<dialog id="lb" aria-label="Gambar testimoni"><img alt=""><button type="button" aria-label="Tutup">×</button></dialog>
+
+<script>
+/* ============================================================
+   DAFTAR TESTIMONI
+   Tambah testimoni baru dengan menyalin satu blok { ... } di bawah.
+   Taruh yang terbaru paling atas. Pisahkan tiap blok dengan koma.
+   - svc : "desain", "peta", atau "tugas"
+   - item: boleh dikosongkan ("")
+   - rate: angka 1 sampai 5
+   - tgl : teks bebas, contoh "November 2026"
+   - img : nama file gambar (contoh "testi/budi.jpg"), kosongkan "" bila tanpa gambar
+   ============================================================ */
+var TESTIMONI = [
+  // {
+  //   nama: "Budi Santoso", svc: "desain", item: "Logo", rate: 5,
+  //   isi: "Hasil desainnya rapi dan selesai tepat waktu. Terima kasih!",
+  //   tgl: "November 2026", img: ""
+  // },
+];
+
+var LABELS = { desain: 'Joki Desain', peta: 'Joki Peta', tugas: 'Joki Tugas' };
+var WA = '6281528301205', BRAND = 'Rekan Joki';
+
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, function (c) {
+    return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[c];
+  });
+}
+function initials(n) {
+  var p = n.trim().split(/\s+/), i = (p[0] || '').charAt(0).toUpperCase();
+  if (p.length > 1) i += p[p.length - 1].charAt(0).toUpperCase();
+  return i;
+}
+
+// ----- tampilkan daftar -----
+var list = document.getElementById('list');
+if (!TESTIMONI.length) {
+  list.innerHTML = '<div class="empty">Belum ada testimoni. Jadilah yang pertama menulis!</div>';
+} else {
+  var sum = 0;
+  list.innerHTML = TESTIMONI.map(function (t, n) {
+    var rt = Math.max(1, Math.min(5, parseInt(t.rate, 10) || 5)), stars = '';
+    sum += rt;
+    for (var k = 1; k <= rt; k++) stars += '<s style="--k:' + k + '">★</s>';
+    stars += '<i>' + new Array(6 - rt).join('★') + '</i>';
+    var pic = t.img
+      ? '<button type="button" class="pic" data-src="' + esc(t.img) + '" aria-label="Perbesar gambar dari ' + esc(t.nama) + '"><img src="' + esc(t.img) + '" alt="Gambar dari ' + esc(t.nama) + '" loading="lazy"></button>'
+      : '<div class="pic noimg" aria-hidden="true">' + esc(initials(t.nama)) + '</div>';
+    var tag = (LABELS[t.svc] || t.svc) + (t.item ? ' · ' + t.item : '');
+    return '<article class="card" data-svc="' + esc(t.svc) + '" data-q="' + esc((t.nama + ' ' + t.isi + ' ' + (t.item || '')).toLowerCase()) + '" style="--i:' + (n % 3) + '">' +
+      pic +
+      '<div class="ban"><div class="ban-in">' +
+        '<div class="ban-top"><b class="nm">' + esc(t.nama) + '</b>' +
+        '<div class="stars" role="img" aria-label="Rating ' + rt + ' dari 5">' + stars + '</div></div>' +
+        '<p>“' + esc(t.isi) + '”</p>' +
+        '<div class="ban-meta"><span class="tag">' + esc(tag) + '</span><small>' + esc(t.tgl || '') + '</small></div>' +
+      '</div></div></article>';
+  }).join('') + '<p class="empty" id="nores" hidden>Tidak ada testimoni yang cocok.</p>';
+
+  document.getElementById('avg').textContent = (sum / TESTIMONI.length).toFixed(1).replace('.', ',') + ' ★';
+  document.getElementById('tot').textContent = TESTIMONI.length;
+  ['sum', 'searchbox', 'chips'].forEach(function (id) { document.getElementById(id).hidden = false; });
+}
+
+// Perbesar gambar testimoni
+var dlg = document.getElementById('lb');
+document.querySelectorAll('.pic[data-src]').forEach(function (b) {
+  b.addEventListener('click', function () { dlg.querySelector('img').src = b.dataset.src; dlg.showModal(); });
+});
+dlg.addEventListener('click', function (e) { if (e.target === dlg || e.target.tagName === 'BUTTON') dlg.close(); });
+
+// Filter layanan + pencarian
+var chips = document.querySelectorAll('.chips button'), cards = document.querySelectorAll('.card');
+var qi = document.getElementById('q'), qx = document.getElementById('qx'), nores = document.getElementById('nores');
+var fsvc = 'all', fq = '';
+function applyFilter() {
+  var shown = 0;
+  cards.forEach(function (c) {
+    var ok = (fsvc === 'all' || c.dataset.svc === fsvc) && (fq === '' || c.dataset.q.indexOf(fq) > -1);
+    c.classList.toggle('hide', !ok);
+    if (ok) shown++;
+  });
+  if (nores) nores.hidden = shown > 0;
+  qx.hidden = fq === '';
+}
+chips.forEach(function (b) {
+  b.addEventListener('click', function () {
+    chips.forEach(function (x) { x.classList.toggle('on', x === b); });
+    fsvc = b.dataset.f; applyFilter();
+  });
+});
+qi.addEventListener('input', function () { fq = qi.value.trim().toLowerCase(); applyFilter(); });
+qx.addEventListener('click', function () { qi.value = ''; fq = ''; applyFilter(); qi.focus(); });
+
+// Munculkan kartu dengan animasi saat masuk layar
+var io = ('IntersectionObserver' in window) ? new IntersectionObserver(function (es) {
+  es.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+}, { threshold: .12 }) : null;
+cards.forEach(function (c) { if (io) io.observe(c); else c.classList.add('in'); });
+
+// Form testimoni muncul sebagai pop-up
+var fm = document.getElementById('fm'), tf = document.getElementById('tf'), ferr = document.getElementById('ferr');
+document.querySelectorAll('.js-open').forEach(function (b) {
+  b.addEventListener('click', function () { ferr.hidden = true; fm.showModal(); });
+});
+fm.querySelector('.fm-x').addEventListener('click', function () { fm.close(); });
+fm.addEventListener('click', function (e) { if (e.target === fm) fm.close(); });
+
+// Penghitung karakter
+var ta = document.getElementById('isi'), cn = document.getElementById('c');
+function upCount() { cn.textContent = ta.value.length; }
+ta.addEventListener('input', upCount); upCount();
+
+// Kirim testimoni: dibuka lewat WhatsApp ke admin
+tf.addEventListener('submit', function (e) {
+  e.preventDefault();
+  var nama = tf.nama.value.trim(), svc = tf.svc.value, item = tf.item.value.trim(),
+      isi = tf.isi.value.trim(), r = tf.querySelector('input[name=rate]:checked'),
+      err = '';
+  if (nama.length < 2 || nama.length > 40) err = 'Nama harus 2 sampai 40 karakter.';
+  else if (!LABELS[svc]) err = 'Pilih jenis layanan yang Anda pesan.';
+  else if (!r) err = 'Pilih rating bintang 1 sampai 5.';
+  else if (isi.length < 10 || isi.length > 500) err = 'Isi testimoni harus 10 sampai 500 karakter.';
+  else if (/https?:\/\/|www\./i.test(isi + ' ' + nama + ' ' + item)) err = 'Tautan tidak diperbolehkan di testimoni.';
+  if (err) { ferr.textContent = err; ferr.hidden = false; return; }
+
+  var rate = parseInt(r.value, 10);
+  var msg = 'Halo ' + BRAND + ', saya ingin mengirim testimoni:\n\n' +
+    'Nama: ' + nama + '\n' +
+    'Layanan: ' + LABELS[svc] + (item ? ' (' + item + ')' : '') + '\n' +
+    'Rating: ' + new Array(rate + 1).join('★') + new Array(6 - rate).join('☆') + ' (' + rate + '/5)\n' +
+    'Testimoni: ' + isi;
+  window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
+  fm.close(); tf.reset(); upCount();
+  document.getElementById('okmsg').hidden = false;
+  document.getElementById('tulis').scrollIntoView({ behavior: 'smooth' });
+});
+
+// Tahun di footer
+document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
